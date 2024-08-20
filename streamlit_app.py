@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 import google.generativeai as genai
 
 # Load and preprocess the data
-df_sports = pd.read_csv(r'C:\Users\shahe\Downloads\sport.csv')
-df_countries = pd.read_csv(r'C:\Users\shahe\Downloads\country.csv')
+df_sports = pd.read_csv('sport.csv')
+df_countries = pd.read_csv('country.csv')
 
 # Prepare the features and target for the model
 sports = df_sports['sport'].unique()
