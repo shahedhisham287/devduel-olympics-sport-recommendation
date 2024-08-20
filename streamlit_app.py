@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 import google.generativeai as genai
 
 # Load and preprocess the data
-df_sports = pd.read_csv('sport.csv')
-df_countries = pd.read_csv('country.csv')
+df_sports = pd.read_csv(r'C:\Users\shahe\Downloads\sport.csv')
+df_countries = pd.read_csv(r'C:\Users\shahe\Downloads\country.csv')
 
 # Prepare the features and target for the model
 sports = df_sports['sport'].unique()
@@ -54,25 +54,25 @@ def gemini_chat(country_info, sport):
               f"Here are the details: Country: {country_info['country']}, "
               f"Total Medals: {country_info['total_medals']}, "
               f"Number of Sports: {country_info['number_of_sports']}. "
-              f"Discuss strengths, weaknesses, and how well the country performed in Paris 2024 Olympics.")
+              f"Discuss strengths, weaknesses, best athletes, and overall performance in Paris 2024 Olympics.")
     response = model.generate_content(prompt)
     return response.text
 
-def comparison_chart(sport, best_country, probabilities, year):
+def comparison_chart(sport, best_country, probabilities):
     top_indices = probabilities.argsort()[-5:][::-1]
     top_countries = [countries[i] for i in top_indices]
     top_probabilities = probabilities[top_indices]
 
     plt.figure(figsize=(10, 6))
     plt.bar(top_countries, top_probabilities, color='skyblue')
-    plt.title(f'Comparison of Top Countries for {sport} ({year})')
+    plt.title(f'Comparison of Top Countries for {sport}')
     plt.xlabel('Country')
     plt.ylabel('Probability')
     plt.grid(True)
     st.pyplot(plt)
 
 def show_summary_card(country_info):
-    st.markdown(f"### Country: **{country_info['country']}**")
+    st.markdown(f"### Recommended Country: **{country_info['country']}**")
     st.markdown(f"**Total Medals:** {country_info['total_medals']}")
     st.markdown(f"**Number of Sports Competed:** {country_info['number_of_sports']}")
     st.markdown(f"**Top Sport:** {country_info['best_sport']}")
@@ -86,7 +86,6 @@ st.write("Welcome to the Olympic Sports Recommendation System! Let's find out wh
 st.image("https://th.bing.com/th/id/OIP.TlN8amZfCgC7Ejq7aM2_UQAAAA?rs=1&pid=ImgDetMain")  # Add an engaging banner image (replace with actual image URL)
 
 sport_to_test = st.selectbox('Select a sport to analyze', sports)
-year_option = st.selectbox('Select the Olympic year', ['Tokyo 2020', 'Paris 2024'])
 
 if st.button('Get Best Country'):
     country, country_info, probabilities = get_best_country(sport_to_test)
@@ -101,7 +100,7 @@ if st.button('Get Best Country'):
         st.write(response)
         
         # Comparison Chart
-        st.markdown(f"### How does {country} compare with other top countries in {sport_to_test} in {year_option}?")
-        comparison_chart(sport_to_test, country, probabilities, year_option)
+        st.markdown(f"### How does {country} compare with other top countries in {sport_to_test}?")
+        comparison_chart(sport_to_test, country, probabilities)
     else:
         st.error("Sport not recognized. Please select a valid sport.")
