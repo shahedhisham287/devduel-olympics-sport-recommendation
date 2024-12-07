@@ -81,11 +81,35 @@ def show_summary_card(country_info):
 # Streamlit interface
 st.title('Olympic Sports Recommendation and Analysis')
 
-# Adding user-friendly widgets
-st.write("Welcome to the Olympic Sports Recommendation System! Let's find out which country excels in your favorite sport.")
-st.image("https://th.bing.com/th/id/OIP.TlN8amZfCgC7Ejq7aM2_UQAAAA?rs=1&pid=ImgDetMain")  # Add an engaging banner image (replace with actual image URL)
 
-sport_to_test = st.selectbox('Select a sport to analyze', sports)
+st.write("Welcome to the Olympic Sports Recommendation System! Let's find out which country excels in your favorite sport.")
+st.image("https://th.bing.com/th/id/OIP.TlN8amZfCgC7Ejq7aM2_UQAAAA?rs=1&pid=ImgDetMain")  
+
+sportt = [
+    "Athletics",
+    "Swimming",
+    "Gymnastics",
+    "Weightlifting",
+    "Wrestling",
+    "Boxing",
+    "Judo",
+    "Taekwondo",
+    "Fencing",
+    "Badminton",
+    "Table Tennis",
+    "Volleyball",
+    "Basketball",
+    "Football",
+    "Hockey",
+    "Water Polo",
+    "Breaking",
+    "Skateboarding",
+    "Sport Climbing",
+    "Surfing","Golf"
+]
+
+# Dropdown for selecting a sport
+sport_to_test = st.selectbox('Select a sport to analyze', sportt)
 
 if st.button('Get Best Country'):
     country, country_info, probabilities = get_best_country(sport_to_test)
