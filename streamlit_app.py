@@ -88,24 +88,20 @@ st.image("https://th.bing.com/th/id/OIP.TlN8amZfCgC7Ejq7aM2_UQAAAA?rs=1&pid=ImgD
 sportt = [
     "Athletics",
     "Swimming",
-    "Gymnastics",
     "Weightlifting",
     "Wrestling",
     "Boxing",
     "Judo",
-    "Taekwondo",
-    "Fencing",
     "Badminton",
     "Table Tennis",
     "Volleyball",
     "Basketball",
     "Football",
     "Hockey",
-    "Water Polo",
-    "Breaking",
-    "Skateboarding",
     "Sport Climbing",
-    "Surfing","Golf"
+    "Golf",
+    "Rowing",
+    "Equestrian"
 ]
 
 # Dropdown for selecting a sport
