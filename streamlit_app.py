@@ -100,8 +100,8 @@ sportt = [
     "Hockey",
     "Sport Climbing",
     "Golf",
-    "Rowing",
-    "Equestrian"
+    "Diving",
+    "Shooting"
 ]
 
 # Dropdown for selecting a sport
