@@ -97,9 +97,6 @@ sportt = [
     "Volleyball",
     "Basketball",
     "Football",
-    "Hockey",
-    "Sport Climbing",
-    "Golf",
     "Diving",
     "Shooting"
 ]
